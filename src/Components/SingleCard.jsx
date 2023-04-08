@@ -1,24 +1,38 @@
-// import React from 'react'
-// import { useState } from 'react'
-// // import { AiOutlineClose } from 'react-icons/ai'
+import React from "react";
+import styles from '../Components/singlecard.module.css'
+import { HeartOutlined } from "@ant-design/icons";
+import { GlobalOutlined } from "@ant-design/icons";
+import { MobileOutlined } from "@ant-design/icons";
+import { MailOutlined } from "@ant-design/icons";
+import {DeleteOutlined, EditOutlined} from '@ant-design/icons'
 
-// export const SingleCard = ({el,ind,len,handleClick,setVal}) => {
-//  const handleRemove = (event,ind)=>{
-//      handleClick(ind)
-//  }
-//   return (
-//           <div>
-//                 <div key={ind} style={{border:"1px solid teal"}}>
-//                    {len>3? <div style={{display:"flex"  ,justifyContent:"end" }} >
-//                     <AiOutlineClose onClick={(event)=>handleRemove(event,ind)} color={"white"} fontSize={"30px"}  />
-//                     </div>:""}
-//                     <div>
-//                     <img height="150px" src="https://fs-assets-fs.s3-us-west-2.amazonaws.com/res/img/2021/04/bWjMbx6FQXuDmF2PJbEj_dummy.png" alt="bishnu" />
-//                     </div>
-//                     <h3 style={{color:"white"}}>Name: {el.name}</h3>
-//                     <p style={{color:"white"}}>Email: {el.email}</p>
-//                     <h4 style={{color:"white"}}>City: {el.address.city}</h4>
-//                 </div>
-//     </div>
-//   )
-// }
+export const SingleCard = ({item, handleRemove, id, handleEdit}) => {
+
+    const handleDelet = () => {
+        handleRemove(id)
+    }
+
+    return (
+        <div className={styles.container}>
+            <img src="https://png.pngtree.com/png-vector/20190420/ourmid/pngtree-vector-business-man-icon-png-image_966609.jpg" alt="img" />
+            <div className={styles.info}>
+               <h4 key={item.id}>{item.name}</h4>
+               <div className={styles.icon}>
+                <MailOutlined /><p style={{marginTop:'-5px'}}>{item.email}</p>
+            </div>
+            <div className={styles.icon}>
+              <MobileOutlined /> <p style={{marginTop:'-5px'}}>{item.phone}</p>
+            </div>
+            <div className={styles.icon}>
+              <GlobalOutlined /> <p style={{marginTop:'-5px'}}>{item.website}</p>
+            </div>
+            <div className={styles.box_1}>
+                <HeartOutlined /> 
+                <EditOutlined onClick={handleEdit}/>
+                <DeleteOutlined onClick={handleDelet}/>
+            </div>
+            </div>
+
+        </div>
+    )
+}

@@ -1,0 +1,23 @@
+
+.container {
+    border: 1px solid red;
+}
+
+.info {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.icon {
+    /* style={{display:'flex', gap:'20px'}} */
+    display: flex;
+    gap: 20px;
+}
+
+.box_1 {
+   border: 1px solid green;
+   display: flex;
+   justify-content: space-around;
+   padding: 2%;
+   margin-left: -10px;
+}
