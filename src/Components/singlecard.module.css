@@ -1,6 +1,7 @@
 
 .container {
-    border: 1px solid red;
+    border: 1px solid none;
+    background-color: rgb(246,246,246);
 }
 
 .info {
@@ -16,8 +17,14 @@
 
 .box_1 {
    border: 1px solid green;
+   background-color: white;
    display: flex;
    justify-content: space-around;
    padding: 2%;
    margin-left: -10px;
+}
+
+.modal {
+    width: 50%;
+    border: 1px solid red;
 }

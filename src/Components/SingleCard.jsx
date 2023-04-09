@@ -5,8 +5,11 @@ import { GlobalOutlined } from "@ant-design/icons";
 import { MobileOutlined } from "@ant-design/icons";
 import { MailOutlined } from "@ant-design/icons";
 import {DeleteOutlined, EditOutlined} from '@ant-design/icons'
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 
-export const SingleCard = ({item, handleRemove, id, handleEdit}) => {
+export const SingleCard = ({item, handleRemove, id}) => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const handleDelet = () => {
         handleRemove(id)
@@ -14,7 +17,7 @@ export const SingleCard = ({item, handleRemove, id, handleEdit}) => {
 
     return (
         <div className={styles.container}>
-            <img src="https://png.pngtree.com/png-vector/20190420/ourmid/pngtree-vector-business-man-icon-png-image_966609.jpg" alt="img" />
+            <img src="https://fs-assets-fs.s3-us-west-2.amazonaws.com/res/img/2021/04/bWjMbx6FQXuDmF2PJbEj_dummy.png" alt="img" />
             <div className={styles.info}>
                <h4 key={item.id}>{item.name}</h4>
                <div className={styles.icon}>
@@ -28,9 +31,39 @@ export const SingleCard = ({item, handleRemove, id, handleEdit}) => {
             </div>
             <div className={styles.box_1}>
                 <HeartOutlined /> 
-                <EditOutlined onClick={handleEdit}/>
+                <NavLink to='/edited'><EditOutlined onClick={onOpen}/></NavLink>
                 <DeleteOutlined onClick={handleDelet}/>
             </div>
+            </div>
+            <div>
+
+            {/* <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay /> */}
+
+            {/* <ModalContent border='1px solid red' width='40%' margin='auto' backgroundColor='white'>
+                <ModalHeader>Basic Modal</ModalHeader> */}
+                
+                {/* <ModalBody> */}
+                    {/* <form>
+                        <div>
+                            <label htmlFor="name">Name :</label>
+                            <input type="text" name="name" value={data.name} onChange={e=> setData({...data, name: e.target.value})} />
+                        </div>
+                    </form> */}
+                {/* </ModalBody> */}
+
+                {/* <ModalFooter>
+                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                       cancle
+                    </Button>
+                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                       ok
+                    </Button>
+                </ModalFooter> */}
+                {/* </ModalContent> */}
+                 
+            {/* </Modal> */}
+
             </div>
 
         </div>

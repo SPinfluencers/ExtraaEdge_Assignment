@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { SingleCard } from "./SingleCard";
 import styles from '../Components/homepage.module.css'
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export const Homepage = () => {
-
+    const {id} = useParams
     const [data, setData] = useState([])
-    const [editData, setEditData] = useState(([]))
+    const [editData, setEditData] = useState([])
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then((res) => res.json())
         .then((data) => setData(data))
     }, [])
+
+    useEffect((id) => {
+      axios.get('https://jsonplaceholder.typicode.com/users/' + id)
+      .then((res) => res.json())
+      .catch(err => console.log(err))
+    })
 
     const handleRemove = (id) => {
       var updatedList = data
@@ -23,18 +31,25 @@ export const Homepage = () => {
       // setData(updatedList)
     }
 
-    const handleEdit = (id) => {
-        const editList = data.find((item) => item.id === id)
-        setData(editList.item)
-        setEditData(id)
-    }
+    // const handleEdit = (id) => {
+    //     const editList = data.find((item) => item.id === id)
+    //     setData(editList.item)
+    //     setEditData(id)
+    // }
+
+    // function handleSubmit () {
+    //   event.preventDefault()
+    //   axios.put('https://jsonplaceholder.typicode.com/users/'+ id, data)
+    //   .then(res => {
+    //     alert('data update')
+    //   })
+    // }
 
     return (
         <>
           <div className={styles.box}>
             {data.map((item, id) => {
-                return <SingleCard handleRemove={handleRemove} id={id} item={item} handleEdit={handleEdit}/>
-                
+                return <SingleCard handleRemove={handleRemove} id={id} item={item} />        
             })}
           </div>
         </>
