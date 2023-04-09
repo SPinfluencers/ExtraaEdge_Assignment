@@ -30,21 +30,6 @@ export const Homepage = () => {
       // console.log(updatedList)
       // setData(updatedList)
     }
-
-    // const handleEdit = (id) => {
-    //     const editList = data.find((item) => item.id === id)
-    //     setData(editList.item)
-    //     setEditData(id)
-    // }
-
-    // function handleSubmit () {
-    //   event.preventDefault()
-    //   axios.put('https://jsonplaceholder.typicode.com/users/'+ id, data)
-    //   .then(res => {
-    //     alert('data update')
-    //   })
-    // }
-
     return (
         <>
           <div className={styles.box}>
